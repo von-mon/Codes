@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TangZhuoLin</string>
+    <string name="student_name">姓名</string>
+    <string name="student_score">成绩</string>
+    <string name="student_number">学号</string>
+    <string name="student_subject">课程</string>
+</resources>

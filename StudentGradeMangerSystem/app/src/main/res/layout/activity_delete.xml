@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/delete_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/delete_number"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入学号" />
+
+    <EditText
+        android:id="@+id/delete_subject"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入课程名" />
+
+</LinearLayout>
