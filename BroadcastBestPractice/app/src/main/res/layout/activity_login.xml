@@ -7,10 +7,29 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Account: "
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/accountEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <TextView
@@ -18,36 +37,17 @@
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Acount：" />
-
-        <EditText
-            android:id="@+id/accountEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="Password：" />
+            android:text="Password："
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/passwordEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPassword" />
-
     </LinearLayout>
 
     <Button
@@ -55,5 +55,6 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:text="Login" />
+        android:text="Button" />
+
 </LinearLayout>

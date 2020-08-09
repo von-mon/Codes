@@ -13,31 +13,31 @@ import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel =
-                NotificationChannel("normal", "Normal", NotificationManager.IMPORTANCE_DEFAULT)
-            notificationManager.createNotificationChannel(notificationChannel)
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel("normal","Normal",NotificationManager.IMPORTANCE_DEFAULT)
+            manager.createNotificationChannel(channel)
+            val channel2 = NotificationChannel("important","Important",NotificationManager.IMPORTANCE_HIGH)
+            manager.createNotificationChannel(channel2)
         }
 
         sendNotice.setOnClickListener {
-            val intent = Intent(this, NotificationActivity::class.java)
-            val pi = PendingIntent.getActivity(this, 0, intent, 0)
-            val notification = NotificationCompat.Builder(this, "normal")
+            val intent = Intent(this,NotificationActivity::class.java)
+            val pi = PendingIntent.getActivity(this,0,intent,0)
+            val notification = NotificationCompat.Builder(this,"important")
                 .setContentTitle("This is content title")
                 .setContentText("This is content text")
                 .setSmallIcon(R.drawable.small_icon)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.large_icon))
+                .setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.large_icon))
+                    //设置点击后的意图
                 .setContentIntent(pi)
+                    //点击后消除通知
                 .setAutoCancel(true)
                 .build()
-            notificationManager.notify(1, notification)
+            manager.notify(1,notification)
         }
     }
 }

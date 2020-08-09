@@ -1,2 +1,2 @@
-rootProject.name='BroadcastBestPractice'
 include ':app'
+rootProject.name = "BroadcastBestPractice"

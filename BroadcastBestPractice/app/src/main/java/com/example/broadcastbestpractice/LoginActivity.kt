@@ -7,7 +7,6 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -15,15 +14,14 @@ class LoginActivity : BaseActivity() {
         login.setOnClickListener {
             val account = accountEdit.text.toString()
             val password = passwordEdit.text.toString()
-
-            if (account=="admin"&&password=="123456"){
+            if (account == "admin" && password == "123456"){
                 val intent = Intent(this,MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }else{
-                Toast.makeText(this,"account or password is invalid",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"account or password is invalid",Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 }

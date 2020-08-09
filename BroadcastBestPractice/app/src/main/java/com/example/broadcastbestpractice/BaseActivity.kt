@@ -1,17 +1,14 @@
 package com.example.broadcastbestpractice
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
-@SuppressLint("Registered")
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity:AppCompatActivity() {
     lateinit var receiver: ForceOfflineReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +23,9 @@ open class BaseActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val intentFilter = IntentFilter()
-        intentFilter.addAction("com.example.broadcasttest.FORCE_OFFLINE")
+        intentFilter.addAction("com.example.broadcastbestpractice.FORCE_OFFLINE")
         receiver = ForceOfflineReceiver()
-        registerReceiver(receiver, intentFilter)
+        registerReceiver(receiver,intentFilter)
     }
 
     override fun onPause() {
@@ -36,19 +33,20 @@ open class BaseActivity : AppCompatActivity() {
         unregisterReceiver(receiver)
     }
 
-    inner class ForceOfflineReceiver : BroadcastReceiver() {
-        override fun onReceive(p0: Context?, p1: Intent?) {
-            AlertDialog.Builder(p0).apply {
-                setTitle("Warning")
-                setMessage("You are forced to be offline. Please try to login again.")
-                setCancelable(false)
-                setPositiveButton("OK") { _, _ ->
-                    ActivityCollector.finishAll()
-                    val i = Intent(p0, LoginActivity::class.java)
-                    context.startActivity(i)
+    inner class ForceOfflineReceiver:BroadcastReceiver(){
+        override fun onReceive(p0: Context, p1: Intent) {
+                AlertDialog.Builder(p0).apply {
+                    setTitle("Warning")
+                    setMessage("You are forced to be offline. Please try to login again.")
+                    setCancelable(false)
+                    setPositiveButton("Ok"){_,_->
+                        ActivityCollector.finishAll()
+                        val i = Intent(p0,LoginActivity::class.java)
+                        p0.startActivity(i)
+                    }
+                    show()
                 }
-                show()
-            }
         }
+
     }
 }

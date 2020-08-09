@@ -8,14 +8,12 @@ object ActivityCollector {
     fun addActivity(activity: Activity){
         activities.add(activity)
     }
-
     fun removeActivity(activity: Activity){
         activities.remove(activity)
     }
-
     fun finishAll(){
         for (activity in activities){
-            if (!activity.isFinishing){
+            if(!activity.isFinishing){
                 activity.finish()
             }
         }
